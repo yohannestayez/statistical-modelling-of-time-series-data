@@ -9,6 +9,29 @@ The project aims to analyze the impact of global events on Brent oil prices. By 
 
 ## **Project Structure**
 
+```
+├── .vscode/
+│   └── settings.json
+├── .github/
+│   └── workflows/
+│       └── unittests.yml
+├── .gitignore
+├── requirements.txt
+├── README.md
+├── src/
+│   └── __init__.py
+├── notebooks/
+│   ├── __init__.py
+│   └── Data_Workflow_and_Model_Understanding.ipynb
+├── tests/
+│   └── __init__.py
+└── scripts/
+    ├── __init__.py
+    └── web_data_scrapping.py
+   
+
+```
+
 The project consists of multiple Jupyter notebooks, each dedicated to specific aspects of the analysis. Below is a brief description of each notebook:
 
 ### **1. Data_Workflow_and_Model_Understanding.ipynb**
