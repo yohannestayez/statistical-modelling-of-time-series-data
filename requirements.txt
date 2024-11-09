@@ -1,7 +1,25 @@
-pandas
+# Core libraries
 numpy
+pandas
+
+# Visualization libraries
 matplotlib
 seaborn
+
+# Statistical and Time-Series Analysis
+scipy
 statsmodels
-arch
-ruptures
+pmdarima  # For auto ARIMA model selection
+
+# Machine Learning
+scikit-learn
+
+# Deep Learning
+torch  # PyTorch for LSTM and other deep learning models
+torchvision  # If using pre-trained models or image processing
+
+# Model saving and serialization
+joblib
+
+# Additional utilities
+jupyterlab  # For running notebooks
