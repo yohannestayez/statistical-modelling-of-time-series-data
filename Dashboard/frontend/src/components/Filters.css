@@ -1,0 +1,48 @@
+/* Filters Container Styling */
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Date Picker Custom Styling */
+  .date-picker {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 180px;
+    text-align: center;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+  }
+  
+  .date-picker:hover {
+    border-color: #007bff;
+  }
+  
+  .date-picker:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Filter Button Styling */
+  .filter-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .filter-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  

@@ -4,22 +4,53 @@ import Charts from './Charts';
 import Filters from './Filters';
 
 const Dashboard = () => {
+  // Initialize state variables as empty arrays to prevent .map() errors
   const [data, setData] = useState([]);
   const [forecast, setForecast] = useState([]);
   const [metrics, setMetrics] = useState({});
 
-  useEffect(() => {
-    fetchData().then((response) => setData(response.data));
-    fetchForecast().then((response) => setForecast(response.data));
-    fetchMetrics().then((response) => setMetrics(response.data));
-  }, []);
+useEffect(() => {
+  // Fetch historical data
+  fetchData()
+    .then((response) => {
+      console.log("Fetched data:", response.data);  // Check data response
+      setData(Array.isArray(response.data) ? response.data : []);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+      setData([]);  // Set to empty array on error
+    });
+
+  // Fetch forecast data
+  fetchForecast()
+    .then((response) => {
+      console.log("Fetched forecast:", response.data);  // Check forecast response
+      setForecast(Array.isArray(response.data) ? response.data : []);
+    })
+    .catch((error) => {
+      console.error("Error fetching forecast:", error);
+      setForecast([]);  // Set to empty array on error
+    });
+
+  // Fetch metrics data
+  fetchMetrics()
+    .then((response) => {
+      console.log("Fetched metrics:", response.data);  // Check metrics response
+      setMetrics(response.data || {});
+    })
+    .catch((error) => {
+      console.error("Error fetching metrics:", error);
+    });
+}, []);
+
+
 
   return (
-    <div>
+    <div className="container">
       <h1>Brent Oil Price Dashboard</h1>
       <Filters setData={setData} />
       <Charts data={data} forecast={forecast} />
-      <div>
+      <div className="metrics">
         <h2>Model Metrics</h2>
         <p>RMSE: {metrics.RMSE}</p>
         <p>MAE: {metrics.MAE}</p>
