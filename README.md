@@ -28,9 +28,33 @@ This project aims to analyze the impact of global events on Brent oil prices and
 │   └── Data_Workflow_and_Model_Understanding.ipynb
 ├── tests/
 │   └── __init__.py
-└── scripts/
-    ├── __init__.py
-    └── web_data_scrapping.py
+├── scripts/
+|    ├── __init__.py
+|    ├──  Model_Training.py
+|    └── web_data_scrapping.py
+└── Dashboard/
+      ├── backend/
+      │   ├── app.py                # Flask backend app
+      │   ├── requirements.txt       # Backend dependencies
+      │   ├── data/
+      │   │   ├── brent_data.csv     # Historical Brent oil prices with events
+      │   │   ├── model_forecast.csv # Model predictions
+      |   |   ├── events_impact.csv   # event impact on be=rent oil prices
+      │   │   └── metrics.json       # Model evaluation metrics
+      │   ├── models/                # Saved models (e.g., LSTM.pth, VAR.joblib)
+      └── frontend/
+         ├── Screenshots/
+         ├── src/
+         │   ├── components/        # React components
+         │   │   ├── Dashboard.js   # Main dashboard component
+         │   │   ├── Charts.js      # Charts component
+         |   |   ├── Filters.css         
+         │   │   └── Filters.js     # Date and event filters
+         │   ├── App.js             # Main React App entry point
+         │   ├── index.js           # ReactDOM.render entry point
+         │   ├── api.js             # API calls to Flask backend
+         ├── package.json           # Frontend dependencies
+         └── .env                   # Environment variables for API URLs
 ```
 
 The project consists of multiple Jupyter notebooks, each dedicated to specific aspects of the analysis. Below is a brief description of each notebook:
@@ -94,6 +118,14 @@ The project consists of multiple Jupyter notebooks, each dedicated to specific a
 
 ---
 
+
+## **Dashboard**
+   - **Historical Trends**: Interactive line charts display historical Brent oil prices.
+   - **Model Forecasts**: Forecast data visualized alongside actual prices for comparison.
+   - **Event Impact Visualization**: Charts highlight the impact of major events on oil prices.
+   - **Metrics Display**: Key performance metrics (e.g., RMSE, MAE) for model evaluation.
+   - **Filters**: Date and event filters allow for custom data ranges and event-specific analysis.
+
 ## **Usage Instructions**
 
 1. **Data Workflow and Analysis**:
@@ -125,6 +157,13 @@ The project consists of multiple Jupyter notebooks, each dedicated to specific a
    - The LSTM and VAR models demonstrate the ability to forecast trends in Brent oil prices based on historical data and economic indicators, with performance evaluated using various metrics.
 
 ---
+
+## **API Endpoints**
+- **`GET /api/data`**: Historical data with event markers.
+- **`GET /api/forecast`**: Model forecasts.
+- **`GET /api/events`**: Event impact data.
+- **`GET /api/metrics`**: Model evaluation metrics.
+
 
 ## **Contributing**
 
