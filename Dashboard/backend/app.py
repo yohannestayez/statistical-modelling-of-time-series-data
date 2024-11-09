@@ -9,6 +9,8 @@ CORS(app)  # Enable CORS for all routes
 # Load data
 brent_data = pd.read_csv('Dashboard/backend/data/brent_data.csv')  # Historical Brent oil prices
 model_forecast = pd.read_csv('Dashboard/backend/data/model_forecast.csv')  # Model forecast data
+event_impact = pd.read_csv('Dashboard/backend/data/events_impact.csv')  #Event impact data
+
 with open('Dashboard/backend/data/metrics.json', 'r') as f:
     model_metrics = json.load(f)  # Model evaluation metrics
 
@@ -32,6 +34,11 @@ def get_data():
 def get_forecast():
     """Return model forecast data."""
     return jsonify(model_forecast.to_dict(orient='records'))
+
+@app.route('/api/events', methods=['GET'])
+def get_events():
+    """Return model forecast data."""
+    return jsonify(event_impact.to_dict(orient='records'))
 
 @app.route('/api/metrics', methods=['GET'])
 def get_metrics():

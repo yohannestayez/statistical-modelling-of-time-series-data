@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData, fetchForecast, fetchMetrics } from '../api';
+import { fetchData, fetchForecast, fetchMetrics, fetchEvents } from '../api';
 import Charts from './Charts';
 import Filters from './Filters';
 
@@ -8,6 +8,7 @@ const Dashboard = () => {
   const [data, setData] = useState([]);
   const [forecast, setForecast] = useState([]);
   const [metrics, setMetrics] = useState({});
+  const [events, setEvents] = useState({});
 
 useEffect(() => {
   // Fetch historical data
@@ -38,9 +39,21 @@ useEffect(() => {
       console.log("Fetched metrics:", response.data);  // Check metrics response
       setMetrics(response.data || {});
     })
-    .catch((error) => {
+    .catch((error)=> {
       console.error("Error fetching metrics:", error);
     });
+  
+  // Fetch events data
+  fetchEvents()
+   .then((response) => {
+      console.log("Fetched events:", response.data);  // Check event response
+      setEvents(Array.isArray(response.data) ? response.data : []);
+   })
+   .catch((error) => {
+     console.error("Error fetching events:", error);
+     setEvents([]);  // Set to empty array on error
+   });
+
 }, []);
 
 
@@ -49,7 +62,7 @@ useEffect(() => {
     <div className="container">
       <h1>Brent Oil Price Dashboard</h1>
       <Filters setData={setData} />
-      <Charts data={data} forecast={forecast} />
+      <Charts data={data} forecast={forecast} events={events}/>
       <div className="metrics">
         <h2>Model Metrics</h2>
         <p>RMSE: {metrics.RMSE}</p>

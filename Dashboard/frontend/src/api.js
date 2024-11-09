@@ -8,4 +8,8 @@ export const fetchData = (startDate, endDate) =>
 
 export const fetchForecast = () => axios.get(`${API_BASE_URL}/forecast`);
 
+export const fetchEvents = () => axios.get(`${API_BASE_URL}/events`);
+
 export const fetchMetrics = () => axios.get(`${API_BASE_URL}/metrics`);
+
+
