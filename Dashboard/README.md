@@ -20,13 +20,14 @@ This project is an interactive web dashboard for analyzing and visualizing Brent
 ## Project Structure
 
 ```
-project-root/
+Dashboard/
 ├── backend/
 │   ├── app.py                # Flask backend app
 │   ├── requirements.txt       # Backend dependencies
 │   ├── data/
 │   │   ├── brent_data.csv     # Historical Brent oil prices with events
 │   │   ├── model_forecast.csv # Model predictions
+|   |   ├── events_impact.csv   # event impact on be=rent oil prices
 │   │   └── metrics.json       # Model evaluation metrics
 │   ├── models/                # Saved models (e.g., LSTM.pth, VAR.joblib)
 └── frontend/
